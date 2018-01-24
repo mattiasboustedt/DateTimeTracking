@@ -1,0 +1,23 @@
+{
+  "id": "04b6e30e-85d8-4ef9-97b7-c0b5642cffaf",
+  "name": "DateTime Tracking",
+  "publisher": "Mattias Boustedt",
+  "brief": "",
+  "description": "Saves a DateTime when an order is created, released, shipment is created, and invoice is created.",
+  "version": "1.0.0.0",
+  "compatibilityId": "1.0.0.0",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "capabilities": [],
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "11.0.0.0",
+  "application": "11.0.0.0",
+  "idRange": {
+    "from": 70000000,
+    "to": 70000000
+  }
+}
