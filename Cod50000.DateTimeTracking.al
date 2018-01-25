@@ -26,18 +26,30 @@ codeunit 70000000 "DateTime Tracking"
             DateTimeTracking.Validate("Order Released", CurrentDateTime);
             DateTimeTracking.Modify;
         end;
-
     end;
 
     [EventSubscriber(ObjectType::Table, 110, 'OnAfterInsertEvent', '', false, false)]
-    local procedure SaveDateTimeShipmentHeaderOnAfterInsert(var Rec: Record "Sales Shipment Header"; RunTrigger : Boolean);
+    local procedure SaveDateTimeShipmentHeaderOnAfterInsert(var Rec: Record "Sales Shipment Header"; RunTrigger: Boolean);
     var
-        DateTimeTracking : Record "DateTime Tracking";
+        DateTimeTracking: Record "DateTime Tracking";
     begin
         DateTimeTracking.SetFilter("Order No", Rec."Order No.");
         if DateTimeTracking.FindFirst then begin
-            DateTimeTracking.Validate("Shipment No", Rec."Order No.");
+            DateTimeTracking.Validate("Shipment No", Rec."No.");
             DateTimeTracking.Validate("Shipment Created", CurrentDateTime);
+            DateTimeTracking.Modify;
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Table, 112, 'OnAfterInsertEvent', '', false, false)]
+    local procedure SaveDateTimeInvoiceHeaderOnAfterInsert(var Rec : Record "Sales Invoice Header"; RunTrigger : Boolean);
+    var
+        DateTimeTracking: Record "DateTime Tracking";
+    begin
+        DateTimeTracking.SetFilter("Order No", Rec."Order No.");
+        if DateTimeTracking.FindFirst then begin
+            DateTimeTracking.Validate("Invoice No", Rec."No.");
+            DateTimeTracking.Validate("Invoice Created", CurrentDateTime);
             DateTimeTracking.Modify;
         end;
     end;
